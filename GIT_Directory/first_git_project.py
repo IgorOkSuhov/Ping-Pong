@@ -20,3 +20,7 @@ def iterator():
             lst.append(i)
     print(lst)
 a = iterator()
+
+
+console_log = 'Test2'
+
