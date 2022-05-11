@@ -46,14 +46,29 @@ rocket_a.goto(-450,0)
 #'you can managment rocket A from keyboard, up(W) and down(S)'
 
 def move_up():
-    y = rocket_a.ycor()
-    rocket_a.sety(y+15)
+    y = rocket_a.ycor() + 10
+    if y > 250:
+        y = 250
+    rocket_a.sety(y)
 def move_down():
-    y = rocket_a.ycor()
-    rocket_a.sety(y-15)
+    y = rocket_a.ycor() - 10
+    if y < -250:
+        y = -250
+    rocket_a.sety(y)
 window.listen()
 window.onkeypress(move_up,"w")
 window.onkeypress(move_down,"s")
+
+# create second rocket
+
+rocket_b = turtle.Turtle()
+rocket_b.color('white')
+rocket_b.shape('square')
+rocket_b.shapesize(stretch_len=1,stretch_wid=5)
+rocket_b.penup()
+rocket_b.goto(450,0)
+
+
 
 
 
