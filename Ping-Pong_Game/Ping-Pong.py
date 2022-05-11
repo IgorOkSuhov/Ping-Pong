@@ -6,7 +6,7 @@ window = turtle.Screen()
 window.title('The Game of year Edition: PING-PONG GAME =)')
 window.setup(width=1.0,height=1.0)
 window.bgcolor('black')
-window.tracer(1)
+window.tracer(2)
 
 # Denote the boundary of the field
 
@@ -34,6 +34,23 @@ for i in range(25):
         border.forward(24)
         border.down()
 border.hideturtle()
+
+#that is a score players
+FONT = ("Arial",44)
+score_a = 0
+name_a = 'IgorOk'
+s1 = turtle.Turtle(visible=False)
+s1.color('white')
+s1.penup()
+s1.setposition(-200,300)
+s1.write(score_a,font=FONT)
+score_b = 0
+name_b = 'Sergey'
+s2 = turtle.Turtle(visible=False)
+s2.color('white')
+s2.penup()
+s2.setposition(200,300)
+s2.write(score_b,font=FONT)
 
 #Create first rocket
 
@@ -108,10 +125,16 @@ while True:
         ball.dy = - ball.dy
 
     if ball.xcor() >= 490:
+        score_b += 1
+        s2.clear()
+        s2.write(score_b,font=FONT)
         ball.goto(0,randint(-150,150))
         ball.dx = choice([-4,-3,-2,2,3,4])
         ball.dy = choice([-4,-3,-2,2,3,4])
     if ball.xcor() <= -490:
+        score_a += 1
+        s1.clear()
+        s1.write(score_a,font=FONT)
         ball.goto(0,randint(-150,150))
         ball.dx = choice([-4,-3,-2,2,3,4])
         ball.dy = choice([-4,-3,-2,2,3,4])
@@ -125,6 +148,8 @@ while True:
 
 
 window.mainloop()
+
+#"WoooooHHhoooOOOOOOoooooo"
 
 
 
