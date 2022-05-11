@@ -1,4 +1,5 @@
 import turtle
+from random import choice,randint
 # Creating a playing field
 
 window = turtle.Screen()
@@ -80,7 +81,33 @@ def move_down_b():
 
 ball = turtle.Turtle()
 ball.shape('circle')
-ball.color('white')
+ball.color('red')
+ball.speed(0)
+ball.dx = 3
+ball.dy = 3
+ball.penup()
+
+
+# Motion Ball
+
+while True:
+    window.update()
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    if ball.ycor() >= 290:
+        ball.dy = - ball.dy
+    if ball.ycor() <= -290:
+        ball.dy = - ball.dy
+
+    if ball.xcor() >= 490:
+        ball.goto(0,randint(-150,150))
+        ball.dx = choice([-4,-3,-2,2,3,4])
+        ball.dy = choice([-4,-3,-2,2,3,4])
+    if ball.xcor() <= -490:
+        ball.goto(0,randint(-150,150))
+        ball.dx = choice([-4,-3,-2,2,3,4])
+        ball.dy = choice([-4,-3,-2,2,3,4])
 
 window.listen()
 window.onkeypress(move_up_b,"Up")
