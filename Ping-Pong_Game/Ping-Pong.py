@@ -6,6 +6,7 @@ window = turtle.Screen()
 window.title('The Game of year Edition: PING-PONG GAME =)')
 window.setup(width=1.0,height=1.0)
 window.bgcolor('black')
+window.tracer(1)
 
 # Denote the boundary of the field
 
@@ -76,6 +77,12 @@ def move_down_b():
     if y < -250:
         y = -250
     rocket_b.sety(y)
+#novigation keyboard
+window.listen()
+window.onkeypress(move_up_b,"Up")
+window.onkeypress(move_down_b,"Down")
+window.onkeypress(move_up,"w")
+window.onkeypress(move_down,"s")
 
 #lets create the ball !)
 
@@ -109,11 +116,16 @@ while True:
         ball.dx = choice([-4,-3,-2,2,3,4])
         ball.dy = choice([-4,-3,-2,2,3,4])
 
-window.listen()
-window.onkeypress(move_up_b,"Up")
-window.onkeypress(move_down_b,"Down")
-window.onkeypress(move_up,"w")
-window.onkeypress(move_down,"s")
+    if ball.ycor() >= rocket_b.ycor() - 50 and ball.ycor() <=rocket_b.ycor()+50 \
+        and ball.xcor() >= rocket_b.xcor() -5 and ball.xcor() <= rocket_b.xcor() +5:
+        ball.dx = - ball.dx
+    if ball.ycor() >= rocket_a.ycor() - 50 and ball.ycor() <=rocket_a.ycor()+50 \
+        and ball.xcor() >= rocket_a.xcor() -5 and ball.xcor() <= rocket_a.xcor() +5:
+        ball.dx = - ball.dx
+
+
+window.mainloop()
+
 
 
 
