@@ -33,5 +33,30 @@ for i in range(25):
         border.down()
 border.hideturtle()
 
+#Create first rocket
+
+rocket_a = turtle.Turtle()
+rocket_a.color('white')
+rocket_a.shape('square')
+rocket_a.shapesize(stretch_len=1,stretch_wid=5)
+rocket_a.penup()
+rocket_a.goto(-450,0)
+
+#creation of management rocket
+#'you can managment rocket A from keyboard, up(W) and down(S)'
+
+def move_up():
+    y = rocket_a.ycor()
+    rocket_a.sety(y+15)
+def move_down():
+    y = rocket_a.ycor()
+    rocket_a.sety(y-15)
+window.listen()
+window.onkeypress(move_up,"w")
+window.onkeypress(move_down,"s")
+
+
+
+
 
 window.mainloop()
